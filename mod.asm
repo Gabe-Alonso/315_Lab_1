@@ -1,3 +1,22 @@
+#Name: Ivan Li/ Gabe Alonso
+#Section: 1
+#Description: Finding the remainder of integer division
+
+# Java Code
+#public static void mod(int num, int div){
+#    int mask = 0xFFFFFFFF;
+#    while (div != 0){
+#        num = num & mask;
+#        div = div & mask;
+#        mask = mask >>> 1;
+#    }
+#    System.out.println(num);
+#}
+
+
+
+
+
 # declare global so programmer can see actual addresses.
 .globl welcome
 .globl prompt
@@ -7,13 +26,13 @@
 .data
 
 welcome:
-	.asciiz " This program finds the remain \n\n"
+	.asciiz " This program finds the remainder of int division \n\n"
 
 prompt:
 	.asciiz " Enter an integer: "
 
 sumText: 
-	.asciiz " \n Rem = "
+	.asciiz " \n Remainder = "
 
 #Text Area (i.e. instructions)
 .text
@@ -34,7 +53,7 @@ main:
 	# This is the starting address of the prompt (notice the
 	# different address from the welcome message)
 	lui     $a0, 0x1001
-	ori     $a0, $a0,0x22
+	ori     $a0, $a0,0x35
 	syscall
 
 	# Read 1st integer from the user (5 is loaded into $v0, then a syscall)
@@ -52,7 +71,7 @@ main:
 	# 0x22 is hexidecimal for 34 decimal (the length of the previous welcome message)
 	ori     $v0, $0, 4			
 	lui     $a0, 0x1001
-	ori     $a0, $a0,0x22
+	ori     $a0, $a0,0x35
 	syscall
 
 	# Read 2nd integer (Divisor) 
@@ -67,7 +86,7 @@ main:
 	# Display the sum text
 	ori     $v0, $0, 4			
 	lui     $a0, 0x1001
-	ori     $a0, $a0,0x36
+	ori     $a0, $a0,0x49
 	syscall
 	
 	# Calculate the remainder by ANDing divisor and given

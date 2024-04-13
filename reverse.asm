@@ -1,3 +1,23 @@
+#Name: Ivan Li/ Gabe Alonso
+#Section: 1
+#Description: Reversing the bit representation of an integer
+
+# Java Code
+#public static void reverse(int num){
+#        int mask = 0x80000000;
+#        int bitCheck = 1;
+#        int result = 0;
+#        for (int i = 0; i < 32; i++ ){
+#            if ((bitCheck & num) > 0){
+#                result += mask;
+#            }
+#            bitCheck = bitCheck << 1;
+#            mask = mask >>> 1;
+#        }
+#        System.out.println(Integer.toBinaryString(result));
+#    }
+
+
 # declare global so programmer can see actual addresses.
 .globl welcome
 .globl prompt
@@ -7,13 +27,13 @@
 .data
 
 welcome:
-	.asciiz " This program adds two numbers \n\n"
+	.asciiz " This program adds reverses the bit representation of an integer \n\n"
 
 prompt:
 	.asciiz " Enter an integer: "
 
 sumText: 
-	.asciiz " \n New = "
+	.asciiz " \n Reversed = "
 
 #Text Area (i.e. instructions)
 .text
@@ -34,7 +54,7 @@ main:
 	# This is the starting address of the prompt (notice the
 	# different address from the welcome message)
 	lui     $a0, 0x1001
-	ori     $a0, $a0,0x22
+	ori     $a0, $a0,0x44
 	syscall
 
 	# Read 1st integer from the user (5 is loaded into $v0, then a syscall)
@@ -78,7 +98,7 @@ conclude:
 	# Display the sum text
 	ori     $v0, $0, 4			
 	lui     $a0, 0x1001
-	ori     $a0, $a0,0x36
+	ori     $a0, $a0,0x58
 	syscall
 	
 	# Display the sum
